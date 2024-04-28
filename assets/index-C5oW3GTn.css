@@ -1,0 +1,1 @@
+:root{--background-element: #313434;--background-main: #212424;--text: #f4f4f4;--shadow: #1119;--shadow-hover: #2339}*{margin:0;padding:0;box-sizing:border-box}main{background-color:var(--background-main);padding:2.5rem;box-shadow:inset 0 1px 15px var(--shadow);min-height:calc(100vh - 7.5rem)}html{font-size:62.5%;font-family:sans-serif;letter-spacing:1.1px}a{text-decoration:none}

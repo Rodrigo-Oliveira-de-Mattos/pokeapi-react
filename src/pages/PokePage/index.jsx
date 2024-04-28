@@ -20,7 +20,7 @@ export default function PokePage() {
 
     if (isPending) return <main><span><img src="./vite.png" alt="loading" /></span></main>
     if (isError) return <main><span>Error: {error.message}</span></main>
-
+    
     return (
         <>
             <Main>
@@ -117,6 +117,7 @@ const H2 = styled.h2`
 
 const Sprite = styled.img`
     max-width: 40rem;
+    width: 100%;
 `
 
 const Moves = styled.div`

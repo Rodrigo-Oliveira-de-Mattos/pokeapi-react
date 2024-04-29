@@ -3,8 +3,12 @@ import { useQuery } from "@tanstack/react-query"
 import Ability from '../../components/Ability';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../contexts/theme-context';
+import { useContext } from 'react';
 
 export default function PokePage() {
+    const { theme } = useContext(ThemeContext);
+
     const location = useLocation();
     const name = location.pathname.replace("/pokeapi-react/poke-info/", "");
 
@@ -23,12 +27,12 @@ export default function PokePage() {
     
     return (
         <>
-            <Main>
-                <Link to="/pokeapi-react/"><span>⬅ Back</span></Link>
+            <Main style={{ color: theme.text, backgroundColor: theme.backgroundMain, boxShadow: 'inset 0px 1px 15px' + theme.shadow }}>
+                <Link style={{ color: theme.text, backgroundColor: theme.backgroundElement }} to="/pokeapi-react/"><span>⬅ Back</span></Link>
                 <p>#{data.id}</p>
                 <Pokemon>
                     <Ol>{data.types.map((type) => {
-                        return <li key={type.type.name}>{type.type.name}</li>
+                        return <li style={{ backgroundColor: theme.backgroundElement }} key={type.type.name}>{type.type.name}</li>
                     })}</Ol>
                     <H2>{data.name}</H2>
                     <Sprite src={data.sprites.other.dream_world.front_default} alt={data.name} />
@@ -44,7 +48,7 @@ export default function PokePage() {
                     <h3>Moves: </h3>
                     <ul>
                         {data.moves.map((move) => {
-                            return <li key={move.move.name}>{move.move.name}</li>
+                            return <li  style={{ backgroundColor: theme.backgroundElement }} key={move.move.name}>{move.move.name}</li>
                         })}
                     </ul>
                 </Moves>
@@ -57,20 +61,16 @@ const Main = styled.main`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    color: var(--text);
     p{
         font-size: 1.5em;
     }
     a{
         width: fit-content;
         font-size: 1.6em;
-        color: var(--text);
-        background-color: var(--background-element);
         padding: 1rem;
         border-radius: 1rem;
         cursor: pointer;
         &:hover{
-            box-shadow: 0 0 10px var(--shadow-hover);
             transform: scale(1.1);
         }
     }
@@ -95,7 +95,6 @@ const Ol = styled.ol`
         border-radius: 99rem;
         text-align: center;
         padding: .75rem;
-        background-color: var(--background-element);
     }
 `
 
@@ -106,6 +105,12 @@ const Ul = styled.ul`
     gap: 4rem;
     row-gap: 1rem;
     margin: 2rem 0;
+    li{
+        width: calc(100vw - 50px);
+        p{
+            width: inherit;
+        }
+    }
 `
 
 const H2 = styled.h2`
@@ -137,7 +142,6 @@ const Moves = styled.div`
             border-radius: 1rem;
             text-align: center;
             padding: 1.5rem;
-            background-color: var(--background-element);
         }
     }
 `

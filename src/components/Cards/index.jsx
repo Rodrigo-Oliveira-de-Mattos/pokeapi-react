@@ -32,4 +32,7 @@ const Ul = styled.ul`
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 2rem;
     padding: 2.5rem;
+    li:hover{
+        background-color: red;
+    }
 `

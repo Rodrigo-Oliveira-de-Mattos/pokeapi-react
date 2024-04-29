@@ -1,15 +1,16 @@
 import { Outlet } from 'react-router-dom'
-import Home from './pages/Home'
 import Header from './components/Header'
+import { ThemeProvider } from './contexts/theme-context'
+
 import './reset.css'
 
 function App() {
 
   return (
-    <>
+    <ThemeProvider>
       <Header />
       <Outlet />
-    </>
+    </ThemeProvider>
   )
 }
 

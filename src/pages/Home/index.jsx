@@ -1,35 +1,24 @@
 import styled from "styled-components"
 import Cards from "../../components/Cards"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useContext } from "react"
+import { ThemeContext } from "../../contexts/theme-context"
+
 
 export default function Home() {
+    const { theme } = useContext(ThemeContext)
 
     const [count, setCount] = useState(10)
 
     return (
-        <Main>
+        <main style={{ backgroundColor: theme.backgroundMain, boxShadow: 'inset 0px 1px 15px' + theme.shadow }}>
             <Cards url={`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${count}`} />
-            <Div>
-                <button onClick={() => setCount(count + 10)}>Carregar mais</button>
+            <Div >
+                <button style={{ color: theme.text, backgroundColor: theme.backgroundElement, boxShadow: '0px 0px 5px' + theme.shadow }} onClick={() => setCount(count + 10)}>Carregar mais</button>
             </Div>
-        </Main>
+        </main>
     )
 }
-
-const Main = styled.main`
-    input, select ,button{
-        padding: 1rem;
-        background-color: var(--background-element);
-        color: var(--text);
-        border: none;
-        border-radius: 1rem;
-        
-        &:hover{
-            box-shadow: 0 0 5px var(--shadow-hover);
-            transform: scale(1.01);
-        }
-    }
-`
 
 const Div = styled.div`
     width: 100%;
@@ -39,6 +28,12 @@ const Div = styled.div`
         width: min(100%, 900px);
         cursor: pointer;
         font-size: 2rem;
-        cursor: pointer;
+        padding: 1rem;
+        border: none;
+        border-radius: 1rem;
+        
+        &:hover{
+            transform: scale(1.01);
+        }
     }
 `

@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { ThemeContext } from "../../contexts/theme-context"
+import { useContext } from "react"
 
 export default function Card({ name, url }) {
+    const { theme } = useContext(ThemeContext);
 
     const fetchPokemon = () => {
         return fetch(url)
@@ -18,8 +21,8 @@ export default function Card({ name, url }) {
     if (isError) return <main><span>Error: {error.message}</span></main>
 
     return (
-        <Li>
-            <Link to={{
+        <Li style={{ backgroundColor: theme.backgroundElement, boxShadow: '0 0 10px' + theme.shadow }}>
+            <Link style={{ color: theme.text }} to={{
                 pathname: `/pokeapi-react/poke-info/${data.name}`,
                 state: { name: data.name }
             }}>
@@ -32,19 +35,15 @@ export default function Card({ name, url }) {
 }
 
 const Li = styled.li`
-    background-color: var(--background-element);
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 0 10px var(--shadow);
     cursor: pointer;
     a{
         gap: 4rem;
-        color: var(--text);
         font-size: 2em;
         width: 100%;
         display: grid;
         place-items: center;
-        color: var(--text);
     }
     i{
         width: 100%;
@@ -55,7 +54,6 @@ const Li = styled.li`
         text-transform: uppercase;
     }
     &:hover{
-        box-shadow: 0 0 40px var(--shadow-hover);
         transform: scale(1.02);
     }
 `
@@ -63,5 +61,4 @@ const Li = styled.li`
 const Img = styled.img`
     height: 100px;
     max-width: 100%;
-    
 `

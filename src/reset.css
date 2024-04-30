@@ -19,3 +19,7 @@ html {
 a {
   text-decoration: none;
 }
+
+img{
+  user-select: none;
+}

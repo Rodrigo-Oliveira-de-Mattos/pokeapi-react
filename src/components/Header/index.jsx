@@ -6,12 +6,10 @@ export default function Header() {
     const { theme, setTheme } = useContext(ThemeContext)
 
     useEffect(() => {
-        const toggleTheme = document.getElementById('toggle-theme')
         const labelTheme = document.getElementById('label-theme')
-        if (toggleTheme.checked) {
-            labelTheme.classList.add('light-mode')
-            labelTheme.classList.remove('dark-mode')
-        } else {
+        if (theme.state === 'light') {
+            labelTheme.classList.replace('dark-mode', 'light-mode')
+        } else if (theme.state === 'dark') {
             labelTheme.classList.remove('light-mode')
             labelTheme.classList.add('dark-mode')
         }

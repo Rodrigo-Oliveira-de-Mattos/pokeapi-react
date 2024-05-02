@@ -14,7 +14,7 @@ export default function Cards({ url, search }) {
         queryFn: fetchCards
     })
 
-    if (isPending) return <main><span>Loading...</span></main>
+    if (isPending) return <main><span className="loading" style={{display: 'grid', placeItems: 'center'}}><img src="./vite.png" alt="loading" /></span></main>
     if (isError) return <main><span>Error: {error.message}</span></main>
 
     return (

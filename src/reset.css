@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all .2s;
 }
 
 main {
   padding: 2.5rem;
-  min-height: calc(100vh - 7.5rem);
+  padding-top: 10rem;
+  min-height: 100vh;
 }
 
 html {
@@ -17,9 +17,25 @@ html {
 }
 
 a {
+  transition: all 0.2s;
   text-decoration: none;
 }
 
-img{
+img {
+  transition: all 0.2s;
   user-select: none;
+}
+
+label {
+  transition: all 0.2s;
+}
+
+.loading{
+  animation: rotate 1s infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }

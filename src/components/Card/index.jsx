@@ -17,14 +17,13 @@ export default function Card({ name, url }) {
         queryFn: fetchPokemon
     })
 
-    if (isPending) return <span><img src="./vite.png" alt="loading" /></span>
+    if (isPending) return <span className="loading" style={{display: 'grid', placeItems: 'center'}}><img src="./vite.png" alt="loading" /></span>
     if (isError) return <main><span>Error: {error.message}</span></main>
 
     return (
         <Li style={{ backgroundColor: theme.backgroundElement, boxShadow: '0 0 10px' + theme.shadow }}>
             <Link style={{ color: theme.text }} to={{
                 pathname: `/pokeapi-react/poke-info/${data.name}`,
-                state: { name: data.name }
             }}>
                 <i># {data.id}</i>
                 <Img src={data.sprites.other.showdown.front_default} alt={data.name} />

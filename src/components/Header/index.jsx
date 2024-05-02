@@ -15,8 +15,15 @@ export default function Header() {
         }
     }, [, theme])
 
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            const header = document.getElementById("header")
+            header.classList.toggle("scroll", window.scrollY > 45)
+        })
+    })
+
     return (
-        <HeaderStyled style={{ color: theme.text, backgroundColor: theme.backgroundElement }}>
+        <HeaderStyled id="header" style={{ color: theme.text, backgroundColor: theme.backgroundElement, boxShadow: '0px 1px 15px' + theme.shadow }}>
             <h1>PokéAPI</h1>
             <ToggleTheme>
                 <input id="toggle-theme" type="checkbox" onChange={() => {
@@ -29,16 +36,25 @@ export default function Header() {
 }
 
 const HeaderStyled = styled.header`
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100svw;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem 4rem;
     height: 75px;
     font-size: 1.5em;
+
     h1{
         cursor: default;
     }
-
+    &.scroll{
+        transform: translateY(-75px);
+        transition: .5s ease-out;
+    }
 `
 
 const ToggleTheme = styled.div`

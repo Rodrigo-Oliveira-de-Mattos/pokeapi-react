@@ -33,7 +33,7 @@ export default function PokePage() {
     return (
         <>
             <Main style={{ color: theme.text, backgroundColor: theme.backgroundMain }}>
-                <Link style={{ color: theme.text, backgroundColor: theme.backgroundElement }} to="/pokeapi-react/"><span>⬅ Back</span></Link>
+                <Link style={{ color: theme.text, backgroundColor: theme.backgroundElement, boxShadow: '0px 0px 5px' + theme.shadow }} to="/pokeapi-react/"><span>⬅ Back</span></Link>
                 <p>#{actualId}</p>
                 <SwitchPokemon data={data} prevId={prevId} nextId={nextId}/>
                 <AbilityUl data={data} />
@@ -44,9 +44,6 @@ export default function PokePage() {
 }
 
 const Main = styled.main`
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
     p{
         font-size: 1.5em;
     }
@@ -56,6 +53,10 @@ const Main = styled.main`
         padding: 1rem;
         border-radius: 1rem;
         cursor: pointer;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 2rem;
+        z-index: 99;
         &:hover{
             transform: scale(1.1);
         }

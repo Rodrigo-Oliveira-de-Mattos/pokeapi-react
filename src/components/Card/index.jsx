@@ -17,7 +17,7 @@ export default function Card({ name, url }) {
         queryFn: fetchPokemon
     })
 
-    if (isPending) return <span className="loading" style={{display: 'grid', placeItems: 'center'}}><img src="./vite.png" alt="loading" /></span>
+    if (isPending) return <span className="loading" style={{ display: 'grid', placeItems: 'center' }}><img src="./vite.png" alt="loading" /></span>
     if (isError) return <main><span>Error: {error.message}</span></main>
 
     return (
@@ -36,6 +36,7 @@ export default function Card({ name, url }) {
 const Li = styled.li`
     border-radius: 1rem;
     padding: 2rem;
+    @media (width < 550px){ padding: 2rem .5rem; }
     cursor: pointer;
     a{
         gap: 4rem;
@@ -43,11 +44,13 @@ const Li = styled.li`
         width: 100%;
         display: grid;
         place-items: center;
+        @media (width < 550px){ gap: 2rem; }
     }
     i{
         width: 100%;
         font-style: normal;
         font-size: .7em;
+        @media (width < 550px){ margin-left: 3rem; }
     }
     p{
         text-transform: uppercase;
@@ -60,4 +63,5 @@ const Li = styled.li`
 const Img = styled.img`
     height: 100px;
     max-width: 100%;
+    @media (width < 550px){ height: 60px; }
 `

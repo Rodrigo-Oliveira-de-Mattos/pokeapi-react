@@ -6,8 +6,11 @@
 
 main {
   padding: 2.5rem;
-  padding-top: 10rem;
+  padding-top: 12.5rem;
   min-height: 100vh;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 html {

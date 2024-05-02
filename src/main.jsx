@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Home from './pages/Home/index.jsx'
 import PokePage from './pages/PokePage/index.jsx'
+import Types from './pages/Types/index.jsx'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 
@@ -20,7 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/pokeapi-react/poke-info/:id",
         element: <PokePage />,
-      },
+      },{
+        path: "/pokeapi-react/filter-type/:id",
+        element: <Types />,
+      }
     ],
   },
 ])

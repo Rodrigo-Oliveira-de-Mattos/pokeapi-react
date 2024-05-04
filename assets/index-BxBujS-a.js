@@ -281,8 +281,10 @@ Error generating stack: `+o.message+`
     row-gap: 1rem;
     margin: 2rem 0;
     width: 100%;
-    li{
-        width: calc(100vw - 5rem);
+    @media (width < 550px){
+        li{
+            width: calc(100vw - 5rem);
+        }
     }
 `;function yx({data:e}){const{theme:t}=C.useContext(Ht);return _.jsxs(vx,{children:[_.jsx("h3",{children:"Moves: "}),_.jsx("ul",{children:e.moves.map(n=>_.jsx("li",{style:{backgroundColor:t.backgroundElement},children:n.move.name},n.move.name))})]})}const vx=pe.div`
     display: flex;

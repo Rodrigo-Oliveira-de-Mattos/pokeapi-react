@@ -21,7 +21,9 @@ const Ul = styled.ul`
     row-gap: 1rem;
     margin: 2rem 0;
     width: 100%;
-    li{
-        width: calc(100vw - 5rem);
+    @media (width < 550px){
+        li{
+            width: calc(100vw - 5rem);
+        }
     }
 `
